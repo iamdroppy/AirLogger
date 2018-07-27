@@ -46,7 +46,7 @@ namespace AirLogger
             _connection.Connected += OnConnect;
             _connection.DataIncoming += OnIncomingData;
             _connection.DataOutgoing += OnOutgoingData;
-            await _connection.InterceptAsync(HotelEndPoint.Parse("34.232.39.163", 30000));
+            await _connection.InterceptAsync(HotelEndPoint.Parse(_host, _port));
         }
 
         private void OnOutgoingData(object sender, DataInterceptedEventArgs e)
@@ -56,7 +56,7 @@ namespace AirLogger
             {
                 switch (e.Packet.Id)
                 {
-                    case 1767:
+                    case 1273: // second packet
                         {
                             ReplaceLocalPublicKey(e);
                             break;
@@ -80,13 +80,13 @@ namespace AirLogger
                 }
                 switch (e.Packet.Id)
                 {
-                    case 884:
+                    case 1970: // first packet
                         {
                             InitializeKeys();
                             ReplaceRemoteSignedPrimes(e);
                             break;
                         }
-                    case 1838:
+                    case 740: // third packet
                         {
                             ReplaceRemotePublicKey(e);
                             break;

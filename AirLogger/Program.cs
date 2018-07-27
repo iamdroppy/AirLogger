@@ -14,9 +14,11 @@ namespace AirLogger
 
         static async Task MainAsync(string[] args)
         {
-            Logger logger = new Logger("34.232.39.163", 30000);
+            string hostname = "game-us.habbo.com";
+            IPHostEntry entry = await Dns.GetHostEntryAsync(hostname);
+            Logger logger = new Logger(entry.AddressList[0].ToString(), 30000);
             await logger.Start();
-            while (true) ;
+            Console.ReadKey();
         }
     }
 }

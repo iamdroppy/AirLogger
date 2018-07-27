@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Desktop\Sulakore-master\Sulakore\Sulakore.csproj" />
+    <ProjectReference Include="..\Sulakore\Sulakore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
